@@ -11,3 +11,5 @@ do
 done
 
 echo "];" >> ../socks.js
+
+cd ..
