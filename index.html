@@ -17,6 +17,7 @@
       }
       figure {
         margin: 0;
+        margin-bottom: 10px;
         width: 300px;
         height: 385px;
         background-repeat: no-repeat;
@@ -29,73 +30,27 @@
         font-weight: bold;
       }
     </style>
+    <script src="socks.js"></script>
   </head>
   <body>
-    <div id="gallery">
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/DY9As-YXcAA7fc9.jpg" />
-        <figcaption>Marcus</figcaption>
-      </figure>
+    <div id="gallery"></div>
 
-      <figure style="background-image: url('/images/frame.png')">
-        <img src="/images/Image uploaded from iOS.jpg" />
-        <figcaption>Rich</figcaption>
-      </figure>
+    <script>
 
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/IMG_0397.jpg" />
-        <figcaption>Henry</figcaption>
-      </figure>
+      var gallery = document.getElementById('gallery');
 
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/DY-F8mkW0AAQIBs.jpg" />
-        <figcaption>Seren</figcaption>
-      </figure>
+      function buildPicture(sock) {
+        var name = sock.substring(0, sock.indexOf('.'));
+        name = name[0].toUpperCase() + name.substring(1);
+        var markup = '<figure style="background-image: url(/frame.png)"><img src="/images/' + sock + '" /><figcaption>' + name + '</figcaption></figure>';
+        var picture = document.createElement('div');
+        picture.innerHTML = markup;
+        return picture;
+      }
 
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/towc-sock.png" />
-        <figcaption>Matei</figcaption>
-      </figure>
-
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/DY-CYd9XkAA4Tid.jpg" />
-        <figcaption>Dan</figcaption>
-      </figure>
-
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/DY-BcZUW0AAnjKK.jpg" />
-        <figcaption>Jo</figcaption>
-      </figure>
-
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/DY-DcCSXUAAYo9b.jpg" />
-        <figcaption>Amy</figcaption>
-      </figure>
-
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/benjamin.jpg" />
-        <figcaption>Benjamin</figcaption>
-      </figure>
-
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/ben.jpg" />
-        <figcaption>Ben</figcaption>
-      </figure>
-
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/benn.jpg" />
-        <figcaption>Ben</figcaption>
-      </figure>
-
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/ryan.jpg" />
-        <figcaption>Ryan</figcaption>
-      </figure>
-
-      <figure style="background-image: url(/images/frame.png)">
-        <img src="/images/DY-kz6wW0AIno4Q.jpg" />
-        <figcaption>Garrett</figcaption>
-      </figure>
-    </div>
+      socks.sort(function() { return 0.5 - Math.random() }).forEach(function(sock) {
+        gallery.appendChild(buildPicture(sock));
+      });
+    </script>
   </body>
 </html>
