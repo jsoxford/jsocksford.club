@@ -9,7 +9,9 @@ before_install:
 - git config --global push.default simple
 script:
 - ./build.sh
-- git push dokku master
+- git add -f socks.js
+- git commit -m "Built socks"
+- git push dokku master -f
 branches:
   only:
   - master
