@@ -2,10 +2,16 @@
   <head>
     <title>JSocksford Club</title>
     <style>
+      body {
+        background: url(wall.png);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
       #gallery {
         display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-wrap: nowrap;
+        justify-content: space-between;
       }
       figure img {
         width: 171px;
@@ -16,8 +22,7 @@
         object-fit: cover;
       }
       figure {
-        margin: 0;
-        margin-bottom: 10px;
+        margin: 0 80px;
         width: 300px;
         height: 385px;
         background-repeat: no-repeat;
@@ -31,6 +36,9 @@
         opacity: 0.5;
         font-size: 1.3em;
         font-family: cursive;
+      }
+      #gallery div:nth-of-type(even) > figure, #gallery div:nth-of-type(even) > figure img {
+        filter: invert(1);
       }
     </style>
     <script>
@@ -50,7 +58,7 @@
       function buildPicture(sock) {
         var name = sock.substring(0, sock.indexOf('.'));
         name = name[0].toUpperCase() + name.substring(1);
-        var markup = '<figure style="background-image: url(/frame.png)"><img src="/images/' + sock + '" /><figcaption>' + name + '</figcaption></figure>';
+        var markup = '<figure style="background-image: url(/frame.png)"><img src="/images/' + sock + '" alt="' + name + '\'s socks" /><figcaption>' + name + '</figcaption></figure>';
         var picture = document.createElement('div');
         picture.innerHTML = markup;
         return picture;
