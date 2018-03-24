@@ -11,7 +11,7 @@ script:
 - ./build.sh
 - git add -f socks.js
 - git commit -m "Built socks"
-- git push dokku $(TRAVIS_BRANCH):master -f
+- git push dokku $(git rev-parse --abbrev-ref HEAD):master -f
 branches:
   only:
   - master
