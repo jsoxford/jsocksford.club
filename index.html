@@ -30,6 +30,11 @@
         font-weight: bold;
       }
     </style>
+    <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js');
+    }
+    </script>
     <script src="socks.js"></script>
   </head>
   <body>
